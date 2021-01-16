@@ -1,0 +1,42 @@
+using System;
+//using System.Linq;
+//using System.Collections;
+//using System.Collections.Generic;
+
+
+
+namespace Multiplication_Table
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int x, y, number;
+
+            Console.WriteLine("Enter the number 1 to start the multiplication table");
+            number = Convert.ToInt32(Console.ReadLine());
+
+
+            int[,] multiplicationTableArray = new int[10, 10];
+
+
+            for (y = 0; y < 10; y++)
+            {
+                for (x = 0; x < 10; x++)
+                {
+                    int result = multiplicationTableArray[x, y] = (x + 1) * (y + 1);
+                    Console.Write(result + " ");
+                }
+
+                Console.WriteLine(" ");
+            }
+
+
+
+
+
+        }
+    }
+}
