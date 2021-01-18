@@ -1,0 +1,70 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace secondAssignment
+{
+
+
+
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+
+
+
+            List<user> userList = new List<user>();
+
+            user firstUser = new user();
+
+            firstUser.userName = "James_007_Bond";
+            firstUser.latestComment = "Looking slick Mr.Bond!";
+            firstUser.views = 5_555;
+            firstUser.likes = 2_222;
+            firstUser.comments = 3_333;
+
+
+            userList.Add(firstUser);
+
+
+            foreach(var user in userList)
+            {
+                Console.WriteLine("The username for this user is: " + firstUser.userName);
+                Console.WriteLine(
+                 "The number of likes is: " + firstUser.likes);
+                Console.WriteLine(
+                 "The number of views is: " + firstUser.views);
+                Console.WriteLine(
+                 "The latest comment is: " + firstUser.latestComment);
+                Console.WriteLine(
+               "The number of comments is: " + firstUser.comments);
+            }
+
+
+        }
+    }
+
+
+
+
+
+    public class user
+    {
+        public int likes { get; set; }
+
+        public int views { get; set; }
+
+        public string latestComment { get; set; }
+
+        public string userName { get; set; }
+
+        public int comments { get; set; }
+    }
+
+
+}
