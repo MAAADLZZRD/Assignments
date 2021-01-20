@@ -1,0 +1,105 @@
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+
+namespace Assignment_3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+
+
+
+
+            //Console.WriteLine("Hello World!");
+
+            //myGenericClass<int> myClass = new myGenericClass<int>();
+            //int firstItem = myClass.myProperty = 999;
+
+            Cakes<Cake> firstCake = new Cakes<Cake>();
+          
+
+            //List<int> cakeOrderList = new List<int>();
+            //cakeOrderList.Add(firstCake);
+
+
+
+
+            //  List<Cake> specialCakeList =
+            //cakeOrderList.Where(cake => cake.flavor == "Chocolate").ToList();
+
+            //  foreach (var item in specialCakeList)
+            //  {
+            //      Console.WriteLine("The cake in the order is of type " + item.type + " and the flavor is " + item.flavor + ".");
+            //  }
+
+            //Cake cakeOne = new Cake();
+
+
+            Cakes<String> orderList = new Cakes<String>();
+            
+
+            
+
+
+
+
+            Console.WriteLine(myClass2.getMyProperty());
+
+
+
+            myClass.GetMyProperty(3);
+
+
+
+
+
+        }
+    }
+
+
+
+    public class Cakes<T>
+    {
+
+        public Cakes()
+        {
+
+        }
+
+
+        public T cakeType { get; set; }
+
+        public T getCakeType()
+        {
+            return cakeType;
+        }
+
+
+        public void setFlavor(T setFlavor)
+        {
+
+            
+
+            Console.WriteLine("The flavor for this cake will be : " + setFlavor + ".");
+        }
+    }
+
+
+
+    public class Cake
+    {
+        //public string flavor { get; set; }
+
+        public string type { get; set; }
+    }
+
+
+
+
+}
