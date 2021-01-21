@@ -1,0 +1,69 @@
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+
+namespace Assignment_4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+                Cakes firstCake = new Cakes();
+                firstCake.Type = "Party Cake";
+                firstCake.AddFlavor<Flavor>(new ChocolateFlavor() { flavor = "Chocolate" });
+
+                Console.WriteLine(firstCake.Type);
+                Console.WriteLine(firstCake.Flavor.flavor);
+
+
+                Cakes secondCake = new Cakes();
+                secondCake.Type = "Wedding Cake";
+                secondCake.AddFlavor<Flavor>(new VanillaFlavor() { flavor = "Vanilla" });
+
+                Console.WriteLine(secondCake.Type);
+                Console.WriteLine(secondCake.Flavor.flavor);
+
+        }
+        }
+
+
+
+        public class Cakes
+        {
+            public Flavor Flavor { get; set; }
+            public string Type { get; set; }
+
+            public void AddFlavor<T>(T newFlavor)
+            {
+                this.Flavor = newFlavor as Flavor;
+            }
+        }
+
+
+
+        public class Flavor
+        {
+            public string flavor { get; set; }
+
+        }
+
+
+
+
+        public class ChocolateFlavor : Flavor
+        {
+        }
+
+        public class VanillaFlavor : Flavor
+        {
+        }
+
+
+}
+
+
+
+
