@@ -1,0 +1,78 @@
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+
+namespace Assignment_6
+{
+    class Hospital
+    {
+        static void Main(string[] args)
+        {
+
+
+            HospitalPatients patientList = new HospitalPatients();
+
+
+            patientList.AddNewPatient("James Johnson");
+            patientList.AddNewPatient("Rebecca Robinson");
+            patientList.AddNewPatient("Ruby Reynolds");
+            patientList.AddNewPatient("Tony Till");
+            patientList.AddNewPatient("Kuma Kirk");
+
+            patientList.ShowMeHowManyPatientsAreIn();
+            patientList.ShowMeTheActualPatients();
+            
+
+            patientList.PatientHasBeenHelped();
+            patientList.PatientHasBeenHelped();
+
+
+            patientList.ShowMeHowManyPatientsAreIn();
+            patientList.ShowMeTheActualPatients();
+
+
+        }
+    }
+}
+
+
+
+
+
+public class HospitalPatients
+{
+    private Queue<string> waitingQueue = new Queue<string>();
+
+
+
+    public void AddNewPatient(String parameter)
+    {
+        waitingQueue.Enqueue(parameter);
+    }
+
+
+
+    public void ShowMeHowManyPatientsAreIn()
+    {
+        Console.WriteLine(waitingQueue.Count);
+
+    }
+
+
+    public void ShowMeTheActualPatients()
+    {
+        foreach (var item in waitingQueue)
+        {
+            Console.WriteLine("Shopper:" + item);
+        }
+    }
+
+
+
+    public void PatientHasBeenHelped()
+    {
+        waitingQueue.Dequeue();
+    }
+}
