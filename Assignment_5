@@ -1,0 +1,102 @@
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+
+
+    class BackAndForth
+    {
+        static void Main(string[] args)
+        {
+
+
+        Navigation navDestination = new Navigation();
+
+        navDestination.AddDestination("www.Whatevs.edu");
+        navDestination.AddDestination("www.HardKnocks.edu");
+        navDestination.AddDestination("www.Bounce.org");
+        navDestination.AddDestination("www.Cashew.com");
+        navDestination.AddDestination("www.theOtherSide.io");
+        navDestination.AddDestination("www.blank.co");
+
+
+
+        navDestination.PrintDestinations();
+
+
+        navDestination.GoBack();
+
+        navDestination.PrintDestinations();
+
+        navDestination.GoForth();
+
+        navDestination.GoBack();
+        navDestination.GoBack();
+        navDestination.GoBack();
+
+
+        navDestination.GoForth();
+        navDestination.GoForth();
+
+
+
+       }
+    }
+
+
+
+
+    public class Navigation
+    {
+
+    private Stack<string> CurrentPages = new Stack<string>();
+
+    private Stack<string> Forth = new Stack<string>();
+
+    private Stack<string> Back = new Stack<string>();
+
+
+
+    public void AddDestination(string newDestination)
+    {
+        CurrentPages.Push(newDestination);
+    }
+
+
+
+    public void PrintDestinations()
+    {
+        foreach (var item in CurrentPages)
+        {
+            Console.WriteLine("The list of destinations are: " + item);
+        }
+    }
+
+
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+    public void GoBack()
+    {
+        string lastDestination = CurrentPages.Pop();
+        Back.Push(lastDestination);
+        Console.WriteLine("Go back to " + lastDestination);
+
+
+    }
+
+
+
+    public void GoForth()
+    {
+        string lastDestination = Back.Pop();
+        Forth.Push(lastDestination);
+        Console.WriteLine("Go forward to " + lastDestination);
+
+
+    }
+
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    }
