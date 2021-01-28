@@ -1,0 +1,134 @@
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+
+namespace Midterm_Project
+{
+    class Restaurant
+    {
+        static void Main(string[] args)
+        {
+
+
+
+            RestaurantGuestsAndPorterActions guestsArriving = new RestaurantGuestsAndPorterActions();
+
+            guestsArriving.AddNewGuest("Tulley Family");
+            guestsArriving.AddNewGuest("Lima Family");
+            guestsArriving.AddNewGuest("Palatine Family");
+            guestsArriving.AddNewGuest("Wiercozek Family");
+            guestsArriving.AddNewGuest("Oki-koki Family");
+            guestsArriving.AddNewGuest("Zenturi Family");
+
+
+            guestsArriving.ShowMeGuestNames();
+
+            guestsArriving.GuestHasBeenSeated();
+
+
+
+            Dishes porterIsNow = new Dishes();
+
+            porterIsNow.PickingUpDirtyDishes(4);
+            porterIsNow.PickingUpDirtyDishes(7);
+            porterIsNow.PickingUpDirtyDishes(2);
+            porterIsNow.PickingUpDirtyDishes(5);
+            porterIsNow.PickingUpDirtyDishes(12);
+
+            porterIsNow.CountingNumberOfDirtyDishes();
+            porterIsNow.CountingNumberOfCleanDishes();
+
+            porterIsNow.AddingDishesToCleanStack();
+            porterIsNow.AddingDishesToCleanStack();
+            porterIsNow.AddingDishesToCleanStack();
+            porterIsNow.AddingDishesToCleanStack();
+            porterIsNow.AddingDishesToCleanStack();
+            porterIsNow.AddingDishesToCleanStack();
+
+            porterIsNow.CountingNumberOfDirtyDishes();
+            porterIsNow.CountingNumberOfCleanDishes();
+
+
+
+
+        }
+    }
+}
+
+
+
+public class RestaurantGuestsAndPorterActions
+{
+    private Queue<string> restaurantWaitingQueue = new Queue<string>();
+
+
+    private Stack<int> cleanDishes = new Stack<int>();
+
+    private Stack<int> dirtyDishes = new Stack<int>();
+
+
+
+    public void AddNewGuest(String parameter)
+    {
+        restaurantWaitingQueue.Enqueue(parameter);
+    }
+
+
+
+
+    public void ShowMeGuestNames()
+    {
+        foreach (var item in restaurantWaitingQueue)
+        {
+            Console.WriteLine("The " + item + " is now waiting to be seated.");
+        }
+    }
+
+
+
+
+
+    public void GuestHasBeenSeated()
+    {
+        string nameOfGuestSeated = restaurantWaitingQueue.Dequeue();
+
+
+        Console.WriteLine("The " + nameOfGuestSeated + " has been seated.");
+
+       
+
+    }
+
+
+    public void PickingUpDirtyDishes(int numberOfDirtyDishes)
+    {
+        dirtyDishes.Push(numberOfDirtyDishes);
+    }
+
+
+
+    public void CountingNumberOfDirtyDishes()
+    {
+        foreach (var item in dirtyDishes)
+        {
+            Console.WriteLine("The number of dirty dishes in the stack is " + item);
+        }
+    }
+
+
+
+    public void CountingNumberOfCleanDishes()
+    {
+        foreach (var item in cleanDishes)
+        {
+            Console.WriteLine("The number of clean dishes in the stack is " + item);
+        }
+    }
+
+}
+
+
+
+
