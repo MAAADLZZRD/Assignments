@@ -11,8 +11,6 @@ namespace Midterm_Project
         static void Main(string[] args)
         {
 
-
-
             RestaurantGuestsAndPorterActions guestsArriving = new RestaurantGuestsAndPorterActions();
 
             guestsArriving.AddNewGuest("Tulley Family");
@@ -26,30 +24,19 @@ namespace Midterm_Project
             guestsArriving.ShowMeGuestNames();
 
             guestsArriving.GuestHasBeenSeated();
+            guestsArriving.GuestHasBeenSeated();
+            guestsArriving.GuestHasBeenSeated();
+            guestsArriving.GuestHasBeenSeated();
 
+            guestsArriving.NumberOfDirtyDishes();
+            guestsArriving.NumberOfCleanDishes();
 
+            guestsArriving.PorterCleansDishes();
+            guestsArriving.PorterCleansDishes();
+            guestsArriving.PorterCleansDishes();
 
-            Dishes porterIsNow = new Dishes();
-
-            porterIsNow.PickingUpDirtyDishes(4);
-            porterIsNow.PickingUpDirtyDishes(7);
-            porterIsNow.PickingUpDirtyDishes(2);
-            porterIsNow.PickingUpDirtyDishes(5);
-            porterIsNow.PickingUpDirtyDishes(12);
-
-            porterIsNow.CountingNumberOfDirtyDishes();
-            porterIsNow.CountingNumberOfCleanDishes();
-
-            porterIsNow.AddingDishesToCleanStack();
-            porterIsNow.AddingDishesToCleanStack();
-            porterIsNow.AddingDishesToCleanStack();
-            porterIsNow.AddingDishesToCleanStack();
-            porterIsNow.AddingDishesToCleanStack();
-            porterIsNow.AddingDishesToCleanStack();
-
-            porterIsNow.CountingNumberOfDirtyDishes();
-            porterIsNow.CountingNumberOfCleanDishes();
-
+            guestsArriving.NumberOfDirtyDishes();
+            guestsArriving.NumberOfCleanDishes();
 
 
 
@@ -62,10 +49,7 @@ namespace Midterm_Project
 public class RestaurantGuestsAndPorterActions
 {
     private Queue<string> restaurantWaitingQueue = new Queue<string>();
-
-
     private Stack<int> cleanDishes = new Stack<int>();
-
     private Stack<int> dirtyDishes = new Stack<int>();
 
 
@@ -74,9 +58,7 @@ public class RestaurantGuestsAndPorterActions
     {
         restaurantWaitingQueue.Enqueue(parameter);
     }
-
-
-
+    
 
     public void ShowMeGuestNames()
     {
@@ -85,10 +67,7 @@ public class RestaurantGuestsAndPorterActions
             Console.WriteLine("The " + item + " is now waiting to be seated.");
         }
     }
-
-
-
-
+    
 
     public void GuestHasBeenSeated()
     {
@@ -97,36 +76,32 @@ public class RestaurantGuestsAndPorterActions
 
         Console.WriteLine("The " + nameOfGuestSeated + " has been seated.");
 
-       
+        dirtyDishes.Push(1);
 
     }
 
 
-    public void PickingUpDirtyDishes(int numberOfDirtyDishes)
+    public void PorterCleansDishes()
     {
-        dirtyDishes.Push(numberOfDirtyDishes);
+        int dishPickedUp = dirtyDishes.Pop();
+        cleanDishes.Push(dishPickedUp);
+        Console.WriteLine("The dish is now clean");
     }
 
 
-
-    public void CountingNumberOfDirtyDishes()
+    public void NumberOfDirtyDishes()
     {
-        foreach (var item in dirtyDishes)
-        {
-            Console.WriteLine("The number of dirty dishes in the stack is " + item);
-        }
+       Console.WriteLine("The number of dirty dishes in the stack is " + dirtyDishes.Count);
+        
     }
 
 
 
-    public void CountingNumberOfCleanDishes()
+    public void NumberOfCleanDishes()
     {
-        foreach (var item in cleanDishes)
-        {
-            Console.WriteLine("The number of clean dishes in the stack is " + item);
-        }
+            Console.WriteLine("The number of clean dishes in the stack is " + cleanDishes.Count);
+        
     }
-
 }
 
 
