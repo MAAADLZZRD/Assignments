@@ -1,0 +1,96 @@
+
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Assignment_7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Inventory currentInventory = new Inventory();
+            Product newProduct = new Product();
+
+            newProduct.ProductId = 1;
+            newProduct.ProductName = "Blunt Wrap";
+
+            currentInventory.AddProduct("ABC123", newProduct);
+            currentInventory.AddProduct("ACG273", newProduct);
+            currentInventory.AddProduct("HTG909", newProduct);
+            currentInventory.AddProduct("909KKL", newProduct);
+            currentInventory.AddProduct("POK323", newProduct);
+            currentInventory.AddProduct("ABC567", newProduct);
+            currentInventory.AddProduct("ACG987", newProduct);
+            currentInventory.AddProduct("HTG765", newProduct);
+            currentInventory.AddProduct("909GGT", newProduct);
+            currentInventory.AddProduct("POK646", newProduct);
+
+            currentInventory.AddProduct("AWC123", newProduct);
+            currentInventory.AddProduct("AKG273", newProduct);
+            currentInventory.AddProduct("HTC909", newProduct);
+            currentInventory.AddProduct("909LKL", newProduct);
+            currentInventory.AddProduct("P0KE23", newProduct);
+            currentInventory.AddProduct("ADC567", newProduct);
+            currentInventory.AddProduct("AGC987", newProduct);
+            currentInventory.AddProduct("BTC765", newProduct);
+            currentInventory.AddProduct("909LGT", newProduct);
+            currentInventory.AddProduct("POC646", newProduct);
+
+            currentInventory.AddProduct("POC848", newProduct);
+
+            currentInventory.HowManySectionsAreInUse();
+
+
+
+        }
+    }
+}
+
+
+public class Inventory
+{
+
+    private Dictionary<string, Product> products = new Dictionary<string, Product>();
+
+    public void AddProduct(string key, Product theProduct)
+    {
+        bool possibleSectionsToUse = products.Count == 20;
+
+        if (possibleSectionsToUse)
+        {
+            Console.WriteLine("All spaces are in use!");
+            return;
+        }
+       
+
+        bool sectionInUse = products.ContainsKey(key);
+
+        if (sectionInUse)
+        {
+            Console.WriteLine("Section occupied, try later!");
+        }
+
+        else
+        {
+            products.Add(key, theProduct);
+            Console.WriteLine("Product succesfully added!");
+        }
+    }
+
+
+    public void HowManySectionsAreInUse()
+    {
+        Console.WriteLine("Currently, there is " + products.Count + " sections in use.");
+    }
+}
+
+
+
+public class Product
+{
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+}
