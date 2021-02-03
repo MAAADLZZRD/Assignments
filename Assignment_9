@@ -1,0 +1,66 @@
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+
+namespace Module_9
+{
+    public class Program
+    {
+        //private delegate void MyMethodPointer();
+        //private delegate void MyMethodPointer(int x);
+        private delegate void MyMethodPointer(int x, int y);
+
+        static void Main()
+        {
+
+            MyMethodPointer pointer;
+
+            TestClass myClass = new TestClass();
+
+            pointer = myClass.MyMethod;
+            pointer += myClass.MyMethod2;
+
+            pointer += delegate (int z, int x) {
+                Console.WriteLine(x * z);
+            };
+
+
+            pointer += (int e, int f) => { Console.WriteLine(e / f); };
+
+            pointer -= myClass.MyMethod2;
+
+            pointer(5, 5);
+
+
+        }
+    }
+}
+
+
+public class TestClass
+{
+    //public void MyMethod()
+    //{
+    //    Console.WriteLine("Print this to the console.");
+    //}
+
+
+    //public void MyMethod2()
+    //{
+    //    Console.WriteLine("This is the next one.");
+    //}
+
+
+    public void MyMethod(int a, int b)
+    {
+        Console.WriteLine(a+b);
+    }
+
+
+    public void MyMethod2(int b, int a)
+    {
+        Console.WriteLine(b-a);
+    }
+}
