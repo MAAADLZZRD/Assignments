@@ -1,0 +1,99 @@
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Assignment_8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            DMV localDMV = new DMV();
+
+            LicensePlateInfo firstLicensePlate = new LicensePlateInfo();
+            firstLicensePlate.LicensePlate = "EMF3890";
+            firstLicensePlate.State = "Texas";
+
+            LicensePlateInfo secondLicensePlate = new LicensePlateInfo();
+            firstLicensePlate.LicensePlate = "EMF3890";
+            firstLicensePlate.State = "Texas";
+
+            LicensePlateInfo thirdLicensePlate = new LicensePlateInfo();
+            firstLicensePlate.LicensePlate = "EMF3892";
+            firstLicensePlate.State = "Texas";
+
+            LicensePlateInfo fourthLicensePlate = new LicensePlateInfo();
+            firstLicensePlate.LicensePlate = "EMF3893";
+            firstLicensePlate.State = "Texas";
+
+            LicensePlateInfo fifthLicensePlate = new LicensePlateInfo();
+            firstLicensePlate.LicensePlate = "EMF3894";
+            firstLicensePlate.State = "Texas";
+
+            LicensePlateInfo sixthLicensePlate = new LicensePlateInfo();
+            firstLicensePlate.LicensePlate = "EMF3895";
+            firstLicensePlate.State = "Texas";
+
+
+            localDMV.AddLicensePlate(firstLicensePlate);
+            localDMV.AddLicensePlate(secondLicensePlate);
+            localDMV.AddLicensePlate(thirdLicensePlate);
+            localDMV.AddLicensePlate(fourthLicensePlate);
+            localDMV.AddLicensePlate(fifthLicensePlate);
+            localDMV.AddLicensePlate(sixthLicensePlate);
+
+
+
+
+
+
+        }
+    }
+}
+
+
+
+public class DMV
+{
+
+    HashSet<LicensePlateInfo> licensePlates = new HashSet<LicensePlateInfo>();
+
+    public void AddLicensePlate(LicensePlateInfo licensePlate)
+    {
+        bool licensePlateAlreadyExists = licensePlates.Add(licensePlate);
+
+
+
+        if (!licensePlateAlreadyExists)
+        {
+            Console.WriteLine("The license plate " + licensePlate + " already exists!");
+        }
+        else
+        {
+            Console.WriteLine("License plate added succesfully!");
+        }
+    }
+
+}
+
+public class LicensePlateInfo
+{
+    public string LicensePlate { get; set; }
+    public string State { get; set; }
+
+    public override bool Equals(object obj)
+    {
+
+        LicensePlateInfo compareLicensePlate = obj as LicensePlateInfo;
+
+        return this.LicensePlate.Equals(compareLicensePlate.LicensePlate);
+    }
+
+    public override int GetHashCode()
+    {
+        return this.LicensePlate.GetHashCode();
+    }
+}
