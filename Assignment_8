@@ -10,7 +10,6 @@ namespace Assignment_8
         static void Main(string[] args)
         {
 
-
             DMV localDMV = new DMV();
 
             LicensePlateInfo firstLicensePlate = new LicensePlateInfo();
@@ -18,24 +17,24 @@ namespace Assignment_8
             firstLicensePlate.State = "Texas";
 
             LicensePlateInfo secondLicensePlate = new LicensePlateInfo();
-            firstLicensePlate.LicensePlate = "EMF3890";
-            firstLicensePlate.State = "Texas";
+            secondLicensePlate.LicensePlate = "EMF3890";
+            secondLicensePlate.State = "Texas";
 
             LicensePlateInfo thirdLicensePlate = new LicensePlateInfo();
-            firstLicensePlate.LicensePlate = "EMF3892";
-            firstLicensePlate.State = "Texas";
+            thirdLicensePlate.LicensePlate = "EMF3892";
+            thirdLicensePlate.State = "Texas";
 
             LicensePlateInfo fourthLicensePlate = new LicensePlateInfo();
-            firstLicensePlate.LicensePlate = "EMF3893";
-            firstLicensePlate.State = "Texas";
+            fourthLicensePlate.LicensePlate = "EMF3893";
+            fourthLicensePlate.State = "Texas";
 
             LicensePlateInfo fifthLicensePlate = new LicensePlateInfo();
-            firstLicensePlate.LicensePlate = "EMF3894";
-            firstLicensePlate.State = "Texas";
+            fifthLicensePlate.LicensePlate = "EMF3894";
+            fifthLicensePlate.State = "Texas";
 
             LicensePlateInfo sixthLicensePlate = new LicensePlateInfo();
-            firstLicensePlate.LicensePlate = "EMF3895";
-            firstLicensePlate.State = "Texas";
+            sixthLicensePlate.LicensePlate = "EMF3895";
+            sixthLicensePlate.State = "Texas";
 
 
             localDMV.AddLicensePlate(firstLicensePlate);
@@ -44,10 +43,6 @@ namespace Assignment_8
             localDMV.AddLicensePlate(fourthLicensePlate);
             localDMV.AddLicensePlate(fifthLicensePlate);
             localDMV.AddLicensePlate(sixthLicensePlate);
-
-
-
-
 
 
         }
@@ -94,6 +89,9 @@ public class LicensePlateInfo
 
     public override int GetHashCode()
     {
+
+
         return this.LicensePlate.GetHashCode();
+
     }
 }
