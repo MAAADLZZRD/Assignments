@@ -1,66 +1,59 @@
 using System;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
 
-
-namespace Module_9
+namespace Assignment_9
 {
-    public class Program
+    class Program
     {
-        //private delegate void MyMethodPointer();
-        //private delegate void MyMethodPointer(int x);
-        private delegate void MyMethodPointer(int x, int y);
 
-        static void Main()
+        public delegate void DelegatePointer(int a , int b);
+
+
+
+        static void Main(string[] args)
         {
 
-            MyMethodPointer pointer;
+            DelegatePointer pointer;
 
-            TestClass myClass = new TestClass();
+            MyClass newClass = new MyClass();
 
-            pointer = myClass.MyMethod;
-            pointer += myClass.MyMethod2;
+            pointer = newClass.FirstMethod;
+            pointer += newClass.SecondMethod;
 
-            pointer += delegate (int z, int x) {
-                Console.WriteLine(x * z);
+            pointer += delegate (int x, int y) {
+
+                Console.WriteLine("The sum of the two parameters is " + ( x + y));
+	        };
+
+            pointer += (int z, int s) =>
+            {
+                Console.WriteLine(z/s);
             };
 
-
-            pointer += (int e, int f) => { Console.WriteLine(e / f); };
-
-            pointer -= myClass.MyMethod2;
-
-            pointer(5, 5);
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            pointer(50, 5);
 
 
+            pointer -= newClass.FirstMethod;
+            pointer -= newClass.SecondMethod;
+
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.Black;
+            pointer(50, 5);
         }
     }
 }
 
 
-public class TestClass
+public class MyClass
 {
-    //public void MyMethod()
-    //{
-    //    Console.WriteLine("Print this to the console.");
-    //}
-
-
-    //public void MyMethod2()
-    //{
-    //    Console.WriteLine("This is the next one.");
-    //}
-
-
-    public void MyMethod(int a, int b)
+    public void FirstMethod(int a, int b)
     {
-        Console.WriteLine(a+b);
+        Console.WriteLine(a * a * b);
     }
 
-
-    public void MyMethod2(int b, int a)
+    public void SecondMethod(int a, int b)
     {
-        Console.WriteLine(b-a);
+        Console.WriteLine(b + b - a);
     }
 }
