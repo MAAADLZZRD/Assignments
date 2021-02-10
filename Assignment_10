@@ -1,0 +1,119 @@
+using System;
+
+namespace Assignment_10
+{
+    class Program
+    {
+
+        public delegate string DelegatePointer(int a, int b);
+
+
+        static void Main(string[] args)
+        {
+
+           
+
+            LunchMenu menu = new LunchMenu();
+
+            menu.ShowLunchMenu();
+
+        }
+    }
+}
+
+public class LunchMenu
+{
+   
+    private Action theServeAction;
+
+
+    public void ShowLunchMenu()
+    {
+
+        ConsoleKey key = ConsoleKey.Enter;
+
+        while (key != ConsoleKey.E)
+        {
+            Console.WriteLine("P for Pizza");
+            Console.WriteLine("H for Hamburger");
+            Console.WriteLine("S for Spaghetti and Meatballs");
+            Console.WriteLine("F for Fresh Fruit");
+            Console.WriteLine("E for Exit");
+
+            Console.WriteLine("");
+            Console.WriteLine("Select an option from the menu!");
+
+            key = Console.ReadKey().Key;
+
+            switch (key)
+            {
+                case ConsoleKey.P:
+                    theServeAction = Pizza;
+                    Pizza();
+                    break;
+
+                case ConsoleKey.H:
+                    theServeAction = Hamburger;
+                    Hamburger();
+                    break;
+
+                case ConsoleKey.S:
+                    theServeAction = SpaghettiAndMeatballs;
+                    SpaghettiAndMeatballs();
+                    break;
+
+                case ConsoleKey.F:
+                    theServeAction = FreshFruit;
+                    FreshFruit();
+                    break;
+
+            }
+
+            HandleRequest();
+        }
+
+    }
+
+
+    public void Pizza()
+    {
+        Console.BackgroundColor = ConsoleColor.Yellow;
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("");
+        Console.WriteLine("Excellent! You have chosen the pizza!");
+    }
+
+
+    public void Hamburger()
+    {
+        Console.BackgroundColor = ConsoleColor.Green;
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("");
+        Console.WriteLine("Great! The Hamburger it is!");
+    }
+
+
+    public void SpaghettiAndMeatballs()
+    {
+        Console.BackgroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("");
+        Console.WriteLine("Spaghetti and Meatballs coming right up!");
+    }
+
+
+    public void FreshFruit()
+    {
+        Console.BackgroundColor = ConsoleColor.DarkCyan;
+        Console.ForegroundColor = ConsoleColor.Black;
+        Console.WriteLine("");
+        Console.WriteLine("The Freshest of the Fresh Fruit for the Finest!");
+    }
+
+    public void HandleRequest()
+    {
+        theServeAction();
+    }
+
+}
+
