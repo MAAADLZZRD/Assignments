@@ -1,6 +1,6 @@
 using System;
 
-namespace Assignment_10
+namespace Assignment_11
 {
     class Program
     {
@@ -11,7 +11,7 @@ namespace Assignment_10
         static void Main(string[] args)
         {
 
-           
+
 
             LunchMenu menu = new LunchMenu();
 
@@ -23,7 +23,7 @@ namespace Assignment_10
 
 public class LunchMenu
 {
-   
+
     private Action theServeAction;
 
 
@@ -34,11 +34,11 @@ public class LunchMenu
 
         while (key != ConsoleKey.E)
         {
-            Console.WriteLine("P for Pizza");
-            Console.WriteLine("H for Hamburger");
-            Console.WriteLine("S for Spaghetti and Meatballs");
-            Console.WriteLine("F for Fresh Fruit");
-            Console.WriteLine("E for Exit");
+            Console.WriteLine("P is for Pizza");
+            Console.WriteLine("H is for Hamburger");
+            Console.WriteLine("S is for Spaghetti and Meatballs");
+            Console.WriteLine("F is for Fresh Fruit");
+            Console.WriteLine("E is for Exit");
 
             Console.WriteLine("");
             Console.WriteLine("Select an option from the menu!");
@@ -81,24 +81,27 @@ public class LunchMenu
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("");
         Console.WriteLine("Excellent! You have chosen the pizza!");
+        Console.WriteLine("");
     }
 
 
     public void Hamburger()
     {
         Console.BackgroundColor = ConsoleColor.Green;
-        Console.ForegroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Black;
         Console.WriteLine("");
         Console.WriteLine("Great! The Hamburger it is!");
+        Console.WriteLine("");
     }
 
 
     public void SpaghettiAndMeatballs()
     {
-        Console.BackgroundColor = ConsoleColor.White;
-        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.BackgroundColor = ConsoleColor.DarkYellow;
+        Console.ForegroundColor = ConsoleColor.Black;
         Console.WriteLine("");
         Console.WriteLine("Spaghetti and Meatballs coming right up!");
+        Console.WriteLine("");
     }
 
 
@@ -108,6 +111,7 @@ public class LunchMenu
         Console.ForegroundColor = ConsoleColor.Black;
         Console.WriteLine("");
         Console.WriteLine("The Freshest of the Fresh Fruit for the Finest!");
+        Console.WriteLine("");
     }
 
     public void HandleRequest()
